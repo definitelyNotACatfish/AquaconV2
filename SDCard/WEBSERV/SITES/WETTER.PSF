@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang=de>
+<head>
+<meta http-equiv=content-type content=text/html charset=utf-8>
+<link rel=stylesheet type=text/css href=../skripts/designs.css></link>
+<script type=text/javascript src=../skripts/common.jss></script>
+<script type=text/javascript src=../skripts/wetter.jss></script>
+<title>AVR-Webserver</title>
+</head>
+<body>
+<div class=wrapper>
+<div class=Timestamp id=Timestamp></div>
+<div class=headline>
+Aquacon
+</div>
+<script type=text/javascript>Timestamp();window.setInterval(Timestamp,1000);</script>
+<div class=menubox id=menubox></div>
+<script type=text/javascript>Navigationlinks();</script>
+<div class=textbox>
+<br><div style="border-left:blue 6px solid;background:#adffb8">&ensp;Hinweis: Wetterevents überschreiben temporär Teile der aktuelle Tagesplanung bzw. einzelner Kanäle!</div><br>
+<div>&nbsp;<u><b>Gewitter:</b></u>
+<table style=display:inline;position:relative;top:6px>
+<tr>
+<th>Alle Tage</th>
+<th>Montag</th>
+<th>Dienstag</th>
+<th>Mittwoch</th>
+<th>Donnerstag</th>
+<th>Freitag</th>
+<th>Samstag</th>
+<th>Sonntag</th>
+</tr>
+<tr>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Li_All %Li_All% onchange="Li_Checkboxes('Li_All')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Li_Mon %Li_Mon% onchange="Li_Checkboxes('Li_Mon')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Li_Tue %Li_Tue% onchange="Li_Checkboxes('Li_Tue')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Li_Wed %Li_Wed% onchange="Li_Checkboxes('Li_Wed')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Li_Thu %Li_Thu% onchange="Li_Checkboxes('Li_Thu')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Li_Fri %Li_Fri% onchange="Li_Checkboxes('Li_Fri')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Li_Sat %Li_Sat% onchange="Li_Checkboxes('Li_Sat')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Li_Sun %Li_Sun% onchange="Li_Checkboxes('Li_Sun')"><span class=slider></span></label></div></td>
+</tr>
+</table><br><br><br>
+<div style=padding-left:80px;>
+Wahrscheinlichkeit %%:<input type=range style=width:365px class=slider min=0 max=100 value=%Li_posa% ID=Li_posa oninput="document.getElementById('Li_posa_txt').value=this.value;"><input type=textbox readonly size=2 value=%Li_posa% ID=Li_posa_txt><br>
+Minimaldauer (min):<input style=width:400px type=range class=slider min=0 max=120 value=%Li_min% ID=Li_min oninput="document.getElementById('Li_min_txt').value=this.value;"><input type=textbox readonly size=2 value=%Li_min% ID=Li_min_txt><br>
+Maximaldauer (min):<input style=width:397px type=range class=slider min=121 max=720 value=%Li_max% ID=Li_max oninput="document.getElementById('Li_max_txt').value=this.value;"><input type=textbox readonly size=2 value=%Li_max% ID=Li_max_txt><br>
+H&auml;ufigkeit pro Tag: <input type=text size=1 value=%Li_Amou% ID=Li_Amou><br>
+</div>
+<input type=button value=Speichern onclick=Li_Save() style=margin-left:4px;margin-right:4px;left:75px;top:5px;position:relative>
+</div>
+<br><div>&nbsp;<u><b>Wolken:</b></u>
+<table style=display:inline;position:relative;top:6px>
+<tr>
+<th>Alle Tage</th>
+<th>Montag</th>
+<th>Dienstag</th>
+<th>Mittwoch</th>
+<th>Donnerstag</th>
+<th>Freitag</th>
+<th>Samstag</th>
+<th>Sonntag</th>
+</tr>
+<tr>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Cl_All %Cl_All% onchange="Cl_Checkboxes('Cl_All')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Cl_Mon %Cl_Mon% onchange="Cl_Checkboxes('Cl_Mon')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Cl_Tue %Cl_Tue% onchange="Cl_Checkboxes('Cl_Tue')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Cl_Wed %Cl_Wed% onchange="Cl_Checkboxes('Cl_Wed')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Cl_Thu %Cl_Thu% onchange="Cl_Checkboxes('Cl_Thu')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Cl_Fri %Cl_Fri% onchange="Cl_Checkboxes('Cl_Fri')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Cl_Sat %Cl_Sat% onchange="Cl_Checkboxes('Cl_Sat')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Cl_Sun %Cl_Sun% onchange="Cl_Checkboxes('Cl_Sun')"><span class=slider></span></label></div></td>
+</tr>
+</table><br><br><br>
+<div style=padding-left:80px;>
+Wahrscheinlichkeit %%:<input type=range style=width:365px class=slider min=0 max=100 value=%Cl_posa% ID=Cl_posa oninput="document.getElementById('Cl_posa_txt').value=this.value;"><input type=textbox readonly size=2 value=%Cl_posa% ID=Cl_posa_txt><br>
+Minimaldauer (min):<input style=width:400px type=range class=slider min=0 max=120 value=%Cl_min% ID=Cl_min oninput="document.getElementById('Cl_min_txt').value=this.value;"><input type=textbox readonly size=2 value=%Cl_min% ID=Cl_min_txt><br>
+Maximaldauer (min):<input style=width:397px type=range class=slider min=121 max=720 value=%Cl_max% ID=Cl_max oninput="document.getElementById('Cl_max_txt').value=this.value;"><input type=textbox readonly size=2 value=%Cl_max% ID=Cl_max_txt><br>
+H&auml;ufigkeit pro Tag: <input type=text size=1 value=%Cl_Amou% ID=Cl_Amou><br>
+</div>
+<input type=button value=Speichern onclick=Cl_Save() style=margin-left:4px;margin-right:4px;left:75px;top:5px;position:relative>
+</div>
+<br><div>&nbsp;<u><b>Regen:</b></u>
+<table style=display:inline;position:relative;top:6px>
+<tr>
+<th>Alle Tage</th>
+<th>Montag</th>
+<th>Dienstag</th>
+<th>Mittwoch</th>
+<th>Donnerstag</th>
+<th>Freitag</th>
+<th>Samstag</th>
+<th>Sonntag</th>
+</tr>
+<tr>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Ra_All %Ra_All% onchange="Ra_Checkboxes('Ra_All')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Ra_Mon %Ra_Mon% onchange="Ra_Checkboxes('Ra_Mon')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Ra_Tue %Ra_Tue% onchange="Ra_Checkboxes('Ra_Tue')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Ra_Wed %Ra_Wed% onchange="Ra_Checkboxes('Ra_Wed')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Ra_Thu %Ra_Thu% onchange="Ra_Checkboxes('Ra_Thu')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Ra_Fri %Ra_Fri% onchange="Ra_Checkboxes('Ra_Fri')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Ra_Sat %Ra_Sat% onchange="Ra_Checkboxes('Ra_Sat')"><span class=slider></span></label></div></td>
+<td width=80px><br><div class=toggle><label style=display:inline><input type=checkbox ID=Ra_Sun %Ra_Sun% onchange="Ra_Checkboxes('Ra_Sun')"><span class=slider></span></label></div></td>
+</tr>
+</table><br><br><br>
+<div style=padding-left:80px;>
+Wahrscheinlichkeit %%:<input type=range style=width:365px class=slider min=0 max=100 value=%Ra_posa% ID=Ra_posa oninput="document.getElementById('Ra_posa_txt').value=this.value;"><input type=textbox readonly size=2 value=%Ra_posa% ID=Ra_posa_txt><br>
+Minimaldauer (min):<input style=width:400px type=range class=slider min=0 max=120 value=%Ra_min% ID=Ra_min oninput="document.getElementById('Ra_min_txt').value=this.value;"><input type=textbox readonly size=2 value=%Ra_min% ID=Ra_min_txt><br>
+Maximaldauer (min):<input style=width:397px type=range class=slider min=121 max=720 value=%Ra_max% ID=Ra_max oninput="document.getElementById('Ra_max_txt').value=this.value;"><input type=textbox readonly size=2 value=%Ra_max% ID=Ra_max_txt><br>
+H&auml;ufigkeit pro Tag: <input type=text size=1 value=%Ra_Amou% ID=Ra_Amou><br>
+</div>
+<input type=button value=Speichern onclick=Ra_Save() style=margin-left:4px;margin-right:4px;left:75px;top:5px;position:relative>
+</div>
+<br><br><div>&nbsp;<u><b>Mondphasen:</b></u>
+<div class=toggle style=display:inline;position:relative><label style=display:inline><input type=checkbox ID=Moon %Moon%><span class=slider></span></label></div>
+<br><br><div style="border-left:blue 6px solid;background:#adffb8">&ensp;Hinweis: Bei Verwendung wird anhand der untenstehenden Koordinaten der Sonnenuntergang</div>
+<div style="border-left:blue 6px solid;background:#adffb8">&ensp;und Mondphase berechnet. Die Tagesplanung des Kanals für die Mondphase wird von Sonnenunter- bis</div>
+<div style="border-left:blue 6px solid;background:#adffb8">&ensp;aufgang überschrieben.</div><br>
+<div style=padding-left:75px;>
+<table style=display:inline;position:relative;top:6px>
+<tr>
+<td>Kanal:</td>
+<td><select id=Moon_Channel>
+<option %Moon_0% style=background-color:green;color:white value=0>0</option>
+<option %Moon_1% style=background-color:blue;color:white value=1>1</option>
+<option %Moon_2% style=background-color:orange;color:white value=2>2</option>
+<option %Moon_3% style=background-color:Sienna;color:white value=3>3</option>
+<option %Moon_4% style=background-color:purple;color:white value=4>4</option>
+<option %Moon_5% style=background-color:gray;color:white value=5>5</option>
+</select></td>
+</tr>
+<tr>
+<td>Latitude:</td>
+<td><input type=textbox size=8 value=%Moon_Lat% ID=Moon_Lat></td>
+<td>Mainhausen (50.016067)</td>
+</tr>
+<tr>
+<td>Longitude:</td>
+<td><input type=textbox size=8 value=%Moon_Lon% ID=Moon_Lon></td>
+<td>Mainhausen (8.987580)</td>
+</tr>
+</table>
+</div>
+<input type=button value=Speichern onclick=Moon_Save() style=margin-left:4px;margin-right:4px;left:75px;top:10px;position:relative>
+</div>
+<br><br>
+</div>
+<div class=copyrightbox_relative>
+<b>.: Copyright 2018 - 2019 / Frederik  :.</b>
+</div>
+</div>
+</body>
+</html>

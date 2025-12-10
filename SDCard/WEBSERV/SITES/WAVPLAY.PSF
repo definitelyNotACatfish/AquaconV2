@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang=de>
+<head>
+<meta http-equiv=content-type content=text/html charset=utf-8>
+<link rel=stylesheet type=text/css href=../skripts/designs.css></link>
+<script type=text/javascript src=../skripts/wavplay.jss></script>
+<script type=text/javascript src=../skripts/common.jss></script>
+<title>aquacon</title>
+</head>
+<body>
+<div class=wrapper>
+<div class=Timestamp id=Timestamp></div>
+<div class=headline>
+Aquacon
+</div>
+<script type=text/javascript>Timestamp();window.setInterval(Timestamp,1000);</script>
+<div class=menubox id=menubox></div>
+<script type=text/javascript>Navigationlinks();</script>
+<div class=textbox>
+<div style=margin-left:1.2em>
+<br>
+<button ID=WAV_Pause onclick="WAV_Send_CMD('P')">Pause</button>
+<button ID=WAV_Continue onclick="WAV_Send_CMD('C')">Fortsetzen</button>
+<button ID=WAV_Stop onclick="WAV_Send_CMD('S')">Stop</button>
+<b>Volume (0-100%%):</b>
+<input type=range class=slider ID=volume min=0 max=100 step=0.1 value=%WAV_Volume% oninput="document.getElementById('PWM0').value=volume.value;" onmouseup="WAV_Send_CMD('V '+volume.value)" ontouchend="WAV_Send_CMD('V '+volume.value)">
+<input ID=PWM0 value=%WAV_Volume% size=2 readonly>
+<button ID=WAV_Vol100 onclick="document.getElementById('volume').value=100;document.getElementById('PWM0').value=100;WAV_Send_CMD('V 100')">100%%</button>
+<button ID=WAV_Vol0 onclick="document.getElementById('volume').value=0;document.getElementById('PWM0').value=0;WAV_Send_CMD('V 0')">0%%</button>
+<br><br>
+<style>td,th{border:1px solid #ddd;text-align:left;padding:2px}tr:nth-child(even){background-color:#ddd}</style>
+<table>
+<tr>
+<th colspan=2>Lieder in "/webserv/music/"</th>
+</tr>
+<tr>
+<td><a onclick="WAV_Send_CMD('%WAV_File0%')" href=javascript:void(0)>%WAV_File0%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File1%')" href=javascript:void(0)>%WAV_File1%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File2%')" href=javascript:void(0)>%WAV_File2%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File3%')" href=javascript:void(0)>%WAV_File3%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File4%')" href=javascript:void(0)>%WAV_File4%</a></td>
+</tr>
+<tr>
+<td><a onclick="WAV_Send_CMD('%WAV_File5%')" href=javascript:void(0)>%WAV_File5%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File6%')" href=javascript:void(0)>%WAV_File6%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File7%')" href=javascript:void(0)>%WAV_File7%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File8%')" href=javascript:void(0)>%WAV_File8%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File9%')" href=javascript:void(0)>%WAV_File9%</a></td>
+</tr>
+<tr>
+<td><a onclick="WAV_Send_CMD('%WAV_File10%')" href=javascript:void(0)>%WAV_File10%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File11%')" href=javascript:void(0)>%WAV_File11%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File12%')" href=javascript:void(0)>%WAV_File12%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File13%')" href=javascript:void(0)>%WAV_File13%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File14%')" href=javascript:void(0)>%WAV_File14%</a></td>
+</tr>
+<tr>
+<td><a onclick="WAV_Send_CMD('%WAV_File15%')" href=javascript:void(0)>%WAV_File15%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File16%')" href=javascript:void(0)>%WAV_File16%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File17%')" href=javascript:void(0)>%WAV_File17%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File18%')" href=javascript:void(0)>%WAV_File18%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File19%')" href=javascript:void(0)>%WAV_File19%</a></td>
+</tr>
+<tr>
+<td><a onclick="WAV_Send_CMD('%WAV_File20%')" href=javascript:void(0)>%WAV_File20%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File21%')" href=javascript:void(0)>%WAV_File21%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File22%')" href=javascript:void(0)>%WAV_File22%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File23%')" href=javascript:void(0)>%WAV_File23%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File24%')" href=javascript:void(0)>%WAV_File24%</a></td>
+</tr>
+<tr>
+<td><a onclick="WAV_Send_CMD('%WAV_File25%')" href=javascript:void(0)>%WAV_File25%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File26%')" href=javascript:void(0)>%WAV_File26%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File27%')" href=javascript:void(0)>%WAV_File27%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File28%')" href=javascript:void(0)>%WAV_File28%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File29%')" href=javascript:void(0)>%WAV_File29%</a></td>
+</tr>
+<tr>
+<td><a onclick="WAV_Send_CMD('%WAV_File30%')" href=javascript:void(0)>%WAV_File30%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File31%')" href=javascript:void(0)>%WAV_File31%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File32%')" href=javascript:void(0)>%WAV_File32%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File33%')" href=javascript:void(0)>%WAV_File33%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File34%')" href=javascript:void(0)>%WAV_File34%</a></td>
+</tr>
+<tr>
+<td><a onclick="WAV_Send_CMD('%WAV_File35%')" href=javascript:void(0)>%WAV_File35%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File36%')" href=javascript:void(0)>%WAV_File36%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File37%')" href=javascript:void(0)>%WAV_File37%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File38%')" href=javascript:void(0)>%WAV_File38%</a></td>
+<td><a onclick="WAV_Send_CMD('%WAV_File39%')" href=javascript:void(0)>%WAV_File39%</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div class=copyrightbox>
+<div class=copyrightbox>
+<b>.: Copyright 2018 - 2019 / Frederik  :.</b>
+</div>
+</div>
+</div>
+</body>
+</html>

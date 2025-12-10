@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang=de>
+<head>
+<meta http-equiv=content-type content=text/html charset=utf-8>
+<link rel=stylesheet type=text/css href=../skripts/designs.css>
+<script type=text/javascript src=../skripts/common.jss></script>
+<script type=text/javascript src=../skripts/settings.jss></script>
+<title>aquacon</title>
+</head>
+<body>
+<div class=wrapper>
+<div class=Timestamp id=Timestamp></div>
+<div class=headline>
+Aquacon
+</div>
+<script type=text/javascript>Timestamp();window.setInterval(Timestamp,1000);</script>
+<div class=menubox id=menubox></div>
+<script type=text/javascript>Navigationlinks();</script>
+<div class=textbox>
+<br>&nbsp;<b><u>Kanaleinstellungen:</u></b>&emsp;<button id=Channelsettings onclick=Channelsettings_save()>Speichern</button>
+<br><br>
+<div style=margin-left:1.2em class=slidecontainer>
+Kanal 0:&emsp;<select id=Channelsetting0>
+<option value=0></option>
+<option style=background-color:red;color:black value=1>eco+ LED-Leiste GROWx5</option>
+<option style=background-color:#FE642E;color:black value=2>eco+ LED-Leiste SUNSET 3500K</option>
+<option style=background-color:#CEF6F5;color:black value=3>eco+ LED-Leiste SKY 6500K</option>
+<option style=background-color:#81F7F3;color:black value=4>eco+ LED-Leiste DAY 5500K</option>
+<option style=background-color:#FE9A2E;color:black value=5>eco+ LED-Leiste TROPIC 4500K</option>
+<option value=6>Lüfter</option>
+<option value=7>CO2</option>
+</select><br><br>
+Kanal 1:&emsp;<select id=Channelsetting1>
+<option value=0></option>
+<option style=background-color:red;color:black value=1>eco+ LED-Leiste GROWx5</option>
+<option style=background-color:#FE642E;color:black value=2>eco+ LED-Leiste SUNSET 3500K</option>
+<option style=background-color:#CEF6F5;color:black value=3>eco+ LED-Leiste SKY 6500K</option>
+<option style=background-color:#81F7F3;color:black value=4>eco+ LED-Leiste DAY 5500K</option>
+<option style=background-color:#FE9A2E;color:black value=5>eco+ LED-Leiste TROPIC 4500K</option>
+<option value=6>Lüfter</option>
+<option value=7>CO2</option>
+</select><br><br>
+Kanal 2:&emsp;<select id=Channelsetting2>
+<option value=0></option>
+<option style=background-color:red;color:black value=1>eco+ LED-Leiste GROWx5</option>
+<option style=background-color:#FE642E;color:black value=2>eco+ LED-Leiste SUNSET 3500K</option>
+<option style=background-color:#CEF6F5;color:black value=3>eco+ LED-Leiste SKY 6500K</option>
+<option style=background-color:#81F7F3;color:black value=4>eco+ LED-Leiste DAY 5500K</option>
+<option style=background-color:#FE9A2E;color:black value=5>eco+ LED-Leiste TROPIC 4500K</option>
+<option value=6>Lüfter</option>
+<option value=7>CO2</option>
+</select><br><br>
+Kanal 3:&emsp;<select id=Channelsetting3>
+<option value=0></option>
+<option style=background-color:red;color:black value=1>eco+ LED-Leiste GROWx5</option>
+<option style=background-color:#FE642E;color:black value=2>eco+ LED-Leiste SUNSET 3500K</option>
+<option style=background-color:#CEF6F5;color:black value=3>eco+ LED-Leiste SKY 6500K</option>
+<option style=background-color:#81F7F3;color:black value=4>eco+ LED-Leiste DAY 5500K</option>
+<option style=background-color:#FE9A2E;color:black value=5>eco+ LED-Leiste TROPIC 4500K</option>
+<option value=6>Lüfter</option>
+<option value=7>CO2</option>
+</select><br><br>
+Kanal 4:&emsp;<select id=Channelsetting4>
+<option value=0></option>
+<option style=background-color:red;color:black value=1>eco+ LED-Leiste GROWx5</option>
+<option style=background-color:#FE642E;color:black value=2>eco+ LED-Leiste SUNSET 3500K</option>
+<option style=background-color:#CEF6F5;color:black value=3>eco+ LED-Leiste SKY 6500K</option>
+<option style=background-color:#81F7F3;color:black value=4>eco+ LED-Leiste DAY 5500K</option>
+<option style=background-color:#FE9A2E;color:black value=5>eco+ LED-Leiste TROPIC 4500K</option>
+<option value=6>Lüfter</option>
+<option value=7>CO2</option>
+</select><br><br>
+Kanal 5:&emsp;<select id=Channelsetting5>
+<option value=0></option>
+<option style=background-color:red;color:black value=1>eco+ LED-Leiste GROWx5</option>
+<option style=background-color:#FE642E;color:black value=2>eco+ LED-Leiste SUNSET 3500K</option>
+<option style=background-color:#CEF6F5;color:black value=3>eco+ LED-Leiste SKY 6500K</option>
+<option style=background-color:#81F7F3;color:black value=4>eco+ LED-Leiste DAY 5500K</option>
+<option style=background-color:#FE9A2E;color:black value=5>eco+ LED-Leiste TROPIC 4500K</option>
+<option value=6>Lüfter</option>
+<option value=7>CO2</option>
+</select><br><br>
+<script type=text/javascript>setSelectedIndex(document.getElementById("Channelsetting0"),%Setting_Chan0%);setSelectedIndex(document.getElementById("Channelsetting1"),%Setting_Chan1%);setSelectedIndex(document.getElementById("Channelsetting2"),%Setting_Chan2%);setSelectedIndex(document.getElementById("Channelsetting3"),%Setting_Chan3%);setSelectedIndex(document.getElementById("Channelsetting4"),%Setting_Chan4%);setSelectedIndex(document.getElementById("Channelsetting5"),%Setting_Chan5%);</script>
+</div>
+<br><br>&nbsp;<b><u>Netzwerkeinstellungen:</u></b>
+<div id=Webserv>
+<table style=margin-left:18px>
+<tr>
+<td>IP:</td>
+<td><input id=IP value=%IP%></td>
+<td><button id=IP_save onclick=IP_Save()>Speichern</button></td>
+</tr>
+<tr>
+<td>Subnetzmaske:</td>
+<td><input id=Subnetmask value=%Subnetmask%></td>
+<td><button id=Subnetmask_save onclick=Subnetmask_Save()>Speichern</button></td>
+</tr>
+<tr>
+<td>Gateway:</td>
+<td><input id=Gateway value=%Gateway%></td>
+<td><button id=Gateway_save onclick=Gateway_Save()>Speichern</button></td>
+</tr>
+<tr>
+<td>NTP:</td>
+<td><input id=NTP value=%NTP%></td>
+<td><button id=NTP_save onclick=NTP_Save()>Speichern</button></td>
+</tr>
+<tr>
+<td>MAC:</td>
+<td><input id=MAC value=%MAC%></td>
+<td><button id=MAC_save onclick=MAC_Save()>Speichern</button></td>
+</tr>
+</table>
+</div>
+<br><br>
+</div>
+<div class=copyrightbox>
+<b>.: Copyright 2018 - 2019 / Frederik  :.</b>
+</div>
+</div>
+</body>
+</html>

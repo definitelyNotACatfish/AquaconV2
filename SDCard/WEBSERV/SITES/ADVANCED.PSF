@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang=de>
+<head>
+<meta http-equiv=content-type content=text/html charset=utf-8>
+<link rel=stylesheet type=text/css href=../skripts/designs.css></link>
+<script type=text/javascript src=../skripts/common.jss></script>
+<script type=text/javascript src=../skripts/advanced.jss></script>
+<title>aquacon</title>
+</head>
+<body>
+<div class=wrapper>
+<div class=Timestamp id=Timestamp></div>
+<div class=headline>
+Aquacon
+</div>
+<script type=text/javascript>Timestamp();window.setInterval(Timestamp,1000);</script>
+<div class=menubox id=menubox></div>
+<script type=text/javascript>Navigationlinks();</script>
+<div class=textbox>
+<br><div>&nbsp;<b><u>Temperatursteuerung:</u></b>
+<div class=toggle style=display:inline;position:relative><label style=display:inline><input type=checkbox ID=Tempcontrol onchange=Tempcontrol_activate()><span class=slider></span></label></div>
+<br><br><div style=padding-left:75px;>
+<fieldset disabled=disabled id=Tempcontrol_ style=border-style:none>
+<table>
+<tr>
+<td>Schwellwert:</td>
+<td><input type=textbox size=8 value=%Tempcontrol_trig% ID=Tempcontrol_trig>&#176;C</td>
+</tr>
+<tr>
+<td>L&uuml;fterkanal:</td>
+<td>
+<select id=Tempcontrol_fan>
+<option style=background-color:green;color:white value=0>0</option>
+<option style=background-color:blue;color:white value=1>1</option>
+<option style=background-color:orange;color:white value=2>2</option>
+<option style=background-color:Sienna;color:white value=3>3</option>
+<option style=background-color:purple;color:white value=4>4</option>
+<option style=background-color:gray;color:white value=5>5</option>
+<option style=color:white value=6></option>
+</select>
+</td>
+</tr>
+<tr><td><button ID=Tempcontrol_save onclick=Tempcontrol_save()>Speichern</button></td></tr>
+</table>
+</fieldset>
+</div>
+<script type=text/javascript>Tempcontrol_in_use(%Tempcontrol_in_use%);document.getElementById("Tempcontrol_fan").selectedIndex="%Tempcontrol_fan%";</script>
+</div>
+<br>
+</div>
+<div class=copyrightbox>
+<b>.: Copyright 2018 - 2019 / Frederik  :.</b>
+</div>
+</div>
+</body>
+</html>

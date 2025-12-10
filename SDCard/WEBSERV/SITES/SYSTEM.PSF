@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang=de>
+<head>
+<meta http-equiv=content-type content=text/html charset=utf-8>
+<link rel=stylesheet type=text/css href=../skripts/designs.css></link>
+<script type=text/javascript src=../skripts/common.jss></script>
+<title>aquacon</title>
+</head>
+<body>
+<div class=wrapper>
+<div class=Timestamp id=Timestamp></div>
+<div class=headline>
+Aquacon
+</div>
+<script type=text/javascript>Timestamp();window.setInterval(Timestamp,1000);</script>
+<div class=menubox id=menubox></div>
+<script type=text/javascript>Navigationlinks();</script>
+<div class=textbox>
+<br>&nbsp;<u><b>Die Steuerung:</b></u><br>
+<a href=../picture/webserv.jpg target="_blank"">
+<img style=margin-left:2em;width:257px;position:absolute;padding-left:350px alt src=../picture/webserv.jpg>
+</a>
+<div style=margin-left:2em>
+- DHCP, ARP, IP, TCP, UDP, NTP, FTP, ICMP<br>
+- HTML & Parser<br>
+- 16kHz PCM Mono Sound<br>
+- 6 strom&uuml;berwachte PWM Kan&auml;le<br>
+- RTC<br>
+- &micro;SD, &micro;SDXD, &micro;SDHC Support<br>
+- WAV-Webplayer<br>
+</div><br>
+&nbsp;<u><b>Generell:</b></u><br>
+<div style=margin-left:2em>
+<table>
+<tr>
+<td>Uhrzeit:</td>
+<td>%Time%</td>
+</tr>
+<tr>
+<td>Datum:</td>
+<td>%Date%</td>
+</tr>
+<tr>
+<td>Uptime:</td>
+<td>%Uptime%</td>
+</tr>
+<tr>
+<td>Eingangsspannung:</td>
+<td>%Supplyvoltage%</td>
+</tr>
+<tr>
+<td>Systemtemperatur:</td>
+<td>%Systemp% °C</td>
+</tr>
+</table>
+</div>
+<br>&nbsp;<u><b>Netzwerkeinstellungen:</b></u><br><br>
+<div style=margin-left:2em>
+<table>
+<tr>
+<td>IP :</td>
+<td>%IP%</td>
+</tr>
+<tr>
+<td>Subnetzmaske:</td>
+<td>%Subnetmask%</td>
+</tr>
+<tr>
+<td>Gateway:</td>
+<td>%Gateway%</td>
+</tr>
+<tr>
+<td>NTP :</td>
+<td>%NTP%</td>
+</tr>
+<tr>
+<td>MAC:</td>
+<td>%MAC%</td>
+</tr>
+<tr>
+<td>DNS NAME:</td>
+<td>%DHCP%</td>
+</tr>
+</table>
+</div>
+<br>&nbsp;<u><b>Serieller Debug:</b></u><br>
+<div style=margin-left:2em>
+<table>
+<tr>
+<td>Send on Enter:</td>
+<td>\r\n</td>
+</tr>
+<tr>
+<td>Baud (8N1):</td>
+<td>%Debugbaud%</td>
+</tr>
+</table>
+</div>
+<br>
+</div>
+<div class=copyrightbox>
+<b>.: Copyright 2018 - 2019 / Frederik  :.</b>
+</div>
+</div>
+</body>
+</html>

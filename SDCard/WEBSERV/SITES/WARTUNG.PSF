@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta http-equiv="content-type" content="text/html" charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="../skripts/designs.css">
+		<script type="text/javascript" src="../skripts/wartung.jss"></script>
+		<script type="text/javascript" src="../skripts/common.jss"></script>
+		<script type="text/javascript" src="../skripts/chart.jss"></script>
+		<script type="text/javascript" src="../skripts/temp.jss"></script>
+		<title>aquacon</title>
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<div class="Timestamp" id="Timestamp"></div>
+			<div class="headline">
+				Aquacon
+			</div>
+			<script type="text/javascript">
+				Timestamp();
+				window.setInterval(Timestamp, 1000);
+				window.setInterval(Calculate_Filterstatus, 1000);
+				window.setInterval(Calculate_CO2, 1000);
+				window.setInterval(Calculate_Height, 1000);
+				window.setTimeout(function(){window.setInterval(Get_ADCs, 700)},0);
+				window.setTimeout(function(){window.setInterval(Get_Power, 700)},350);
+			</script>
+
+			<div class="menubox" id="menubox"></div>
+			<script type="text/javascript">
+			  Navigationlinks();
+			</script>
+
+			<div class="textbox">
+				<div class="toggle">
+					<br>&nbsp;<u><b>Wartungsmodus:</b></u>
+					<label style="display:inline">
+						<input type="checkbox" id="Wartung_Si" name="Wartung_Si" onchange="Wartung()"><span class="slider"></span>
+					</label>
+				</div>
+				<br><br>&nbsp;<u><b>Aktuelle Beckentemperatur:</b></u>&nbsp;&nbsp;&nbsp;%DS18B20_temp%&#176;C
+
+				&nbsp;&nbsp;<button id="myBtn" style="padding-left:5px;padding-right:5px;">Letzten 24h</button>
+				<div id="myModal" class="modal">
+				  <div class="modal-content">
+				    <div class="modal-header">
+				      <span class="close">&times;</span>
+						<input type="button" value="Reload" onclick="RedrawStats();">
+						<input type="button" value="CSV Export" onclick="CSV_Export();">
+						<canvas id="TempChart" width="auto" height="auto"></canvas>
+						<script type="text/javascript">
+							RedrawStats();
+						</script>
+					</div>
+				  </div>
+				</div>
+				<script type="text/javascript">
+					Modal_load();
+				</script>
+				<br><br>
+
+				&nbsp;<u><b>Filterstatus:</b></u>&nbsp;&nbsp;&nbsp;<div style="display:inline" id="Filterstate">000 L/h (Leerlauf: 1200 L/h)</div><br><br>
+
+				&nbsp;<u><b>CO2 Flasche:</b></u>&nbsp;&nbsp;&nbsp;<div style="display:inline" id="CO2">0% (0g)</div><br><br>
+
+				&nbsp;<u><b>F&uuml;llh&ouml;he:</b></u>&nbsp;&nbsp;&nbsp;<div style="display:inline" id="Height">0 cm</div><br><br>				
+
+				&nbsp;<u><b>Eing&auml;nge:</b></u><br><br>
+				<div style="margin-left:2em;">
+					ADC0: <div style="display: inline;" ID="ADC0">0.0000 V</div><br><br>
+					ADC1: <div style="display: inline;" ID="ADC1">0.0000 V</div><br><br>
+					ADC2: <div style="display: inline;" ID="ADC2">0.0000 V</div><br><br>
+					ADC3: <div style="display: inline;" ID="ADC3">0.0000 V</div><br><br>
+					&nbsp;&nbsp;&nbsp;VCC: <div style="display: inline;" ID="ADC14">0.0000 V</div><br><br>
+				</div>
+				&nbsp;<u><b>Ausg&auml;nge:</b></u><br><br>
+				<div style="margin-left:1.2em;" class="slidecontainer">
+					<fieldset disabled="disabled" id="PWM0-5" style="border-style: none">
+						Kanal 0 (0-100%%): <input class="slider" type="range" step=0.01 ID="PWM0" value="%PWM0%" min="0" max="100" oninput="document.getElementById('PWM0_0').value=PWM0.value;" onmouseup="Set_PWM('PWM0_0')" ontouchend="Set_PWM('PWM0_0')">
+						<input ID="PWM0_0" value="%PWM0%" size="3" readonly>
+						&emsp;Strom: <div style="display: inline;" ID="POWER0">0.000 A</div>
+						&emsp;<Input disabled id="Channelsetting0" style="width:210px;">
+						<br><br>
+						
+						Kanal 1 (0-100%%): <input class="slider" type="range" step=0.01 ID="PWM1" value="%PWM1%" min="0" max="100" oninput="document.getElementById('PWM1_0').value=PWM1.value;" onmouseup="Set_PWM('PWM1_0')" ontouchend="Set_PWM('PWM1_0')">
+						<input ID="PWM1_0" value="%PWM1%" size="3" readonly>
+						&emsp;Strom: <div style="display: inline;" ID="POWER1">0.000 A</div>
+						&emsp;<Input disabled id="Channelsetting1" style="width:210px;">
+						<br><br>
+						
+						Kanal 2 (0-100%%): <input class="slider" type="range" step=0.01 ID="PWM2" value="%PWM2%" min="0" max="100" oninput="document.getElementById('PWM2_0').value=PWM2.value;" onmouseup="Set_PWM('PWM2_0')" ontouchend="Set_PWM('PWM2_0')">
+						<input ID="PWM2_0" value="%PWM2%" size="3" readonly>
+						&emsp;Strom: <div style="display: inline;" ID="POWER2">0.000 A</div>
+						&emsp;<Input disabled id="Channelsetting2" style="width:210px;">
+						<br><br>
+						
+						Kanal 3 (0-100%%): <input class="slider" type="range" step=0.01 ID="PWM3" value="%PWM3%" min="0" max="100" oninput="document.getElementById('PWM3_0').value=PWM3.value;" onmouseup="Set_PWM('PWM3_0')" ontouchend="Set_PWM('PWM3_0')">
+						<input ID="PWM3_0" value="%PWM3%" size="3" readonly>
+						&emsp;Strom: <div style="display: inline;" ID="POWER3">0.000 A</div>
+						&emsp;<Input disabled id="Channelsetting3" style="width:210px;">
+						<br><br>
+						
+						Kanal 4 (0-100%%): <input class="slider" type="range" step=0.01 ID="PWM4" value="%PWM4%" min="0" max="100" oninput="document.getElementById('PWM4_0').value=PWM4.value;" onmouseup="Set_PWM('PWM4_0')" ontouchend="Set_PWM('PWM4_0')">
+						<input ID="PWM4_0" value="%PWM4%" size="3" readonly>
+						&emsp;Strom: <div style="display: inline;" ID="POWER4">0.000 A</div>
+						&emsp;<Input disabled id="Channelsetting4" style="width:210px;">
+						<br><br>
+						
+						Kanal 5 (0-100%%): <input class="slider" type="range" step=0.01 ID="PWM5" value="%PWM5%" min="0" max="100" oninput="document.getElementById('PWM5_0').value=PWM5.value;" onmouseup="Set_PWM('PWM5_0')" ontouchend="Set_PWM('PWM5_0')">
+						<input ID="PWM5_0" value="%PWM5%" size="3" readonly>
+						&emsp;Strom: <div style="display: inline;" ID="POWER5">0.000 A</div>
+						&emsp;<Input disabled id="Channelsetting5" style="width:210px;">
+						<br>
+					</fieldset>
+				</div>
+				<script type="text/javascript">
+					Wartung_in_use(%Wartungszustand%);
+					var Setting = ["","eco+ LED-Leiste GROWx5","eco+ LED-Leiste SUNSET 3500K","eco+ LED-Leiste SKY 6500K","eco+ LED-Leiste DAY 5500K","eco+ LED-Leiste TROPIC 4500K","Lüfter","CO2"];
+					document.getElementById("Channelsetting0").value=Setting[%Setting_Chan0%];
+					document.getElementById("Channelsetting1").value=Setting[%Setting_Chan1%];
+					document.getElementById("Channelsetting2").value=Setting[%Setting_Chan2%];
+					document.getElementById("Channelsetting3").value=Setting[%Setting_Chan3%];
+					document.getElementById("Channelsetting4").value=Setting[%Setting_Chan4%];
+					document.getElementById("Channelsetting5").value=Setting[%Setting_Chan5%];
+				</script>
+				<br>
+			</div>
+			<div class="copyrightbox">
+				<b>.: Copyright 2018 - 2019 / Frederik  :.</b>
+			</div>
+		</div>
+	</body>
+</html>

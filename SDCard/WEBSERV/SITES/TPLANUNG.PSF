@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang=de>
+<head>
+<meta http-equiv=content-type content=text/html charset=utf-8>
+<link rel=stylesheet type=text/css href=../skripts/designs.css>
+<script type=text/javascript src=../skripts/common.jss></script>
+<script type=text/javascript src=../skripts/tplanung.jss></script>
+<title>AVR-Webserver</title>
+</head>
+<body>
+<div class=wrapper>
+<div class=Timestamp id=Timestamp></div>
+<div class=headline>
+Aquacon
+</div>
+<script type=text/javascript>Timestamp();window.setInterval(Timestamp,1000);</script>
+<div class=menubox id=menubox></div>
+<script type=text/javascript>Navigationlinks();</script>
+<div class=textbox>
+<br><canvas ID=Planningwindow Class=Planningwindow></canvas>
+<div class=Plan_Buttons>
+<br>
+<div style=position:relative;float:left;padding-left:4.5em>
+<u><b>Aktueller Kanal:</b></u><br>
+<div ID=ChannelCursorList>---</div>
+</div>
+<div style=position:relative;float:right;left:10px;top:-1px>
+<b>Wochentag:</b>
+<select id=Day onchange=Weekday_Load(Day.value)>
+<option value=0>Montag</option>
+<option value=1>Dienstag</option>
+<option value=2>Mittwoch</option>
+<option value=3>Donnerstag</option>
+<option value=4>Freitag</option>
+<option value=5>Samstag</option>
+<option value=6>Sonntag</option>
+</select>
+<button onclick=Copy_Day()>Kopieren</button><br><br>
+<button onclick=Simulation_ReInit()>Re-Init</button>
+<button onclick=Weekday_Load(Day.value)>Laden</button>
+<button onclick=Save_Day(Day.value)>Speichern</button>
+</div>
+<div style=position:absolute;left:240px;top:1em>
+<b>Anzeigen:</b>
+<div style=background-color:green;color:white;display:inline><input type=checkbox checked id=Check0>0 </div>
+<div style=background-color:blue;color:white;display:inline><input type=checkbox checked id=Check1>1 </div>
+<div style=background-color:orange;color:white;display:inline><input type=checkbox checked id=Check2>2 </div>
+<div style=background-color:Sienna;color:white;display:inline><input type=checkbox checked id=Check3>3 </div>
+<div style=background-color:purple;color:white;display:inline><input type=checkbox checked id=Check4>4 </div>
+<div style=background-color:gray;color:white;display:inline><input type=checkbox checked id=Check5>5&nbsp;</div>
+<br><br>
+</div>
+<div style=position:absolute;left:240px;top:3em>
+<b>Kanal:</b>
+<select id=Channel_Select onchange=Channel_Change()>
+<option style=background-color:green;color:white value=0>0</option>
+<option style=background-color:blue;color:white value=1>1</option>
+<option style=background-color:orange;color:white value=2>2</option>
+<option style=background-color:Sienna;color:white value=3>3</option>
+<option style=background-color:purple;color:white value=4>4</option>
+<option style=background-color:gray;color:white value=5>5</option>
+</select>
+<button onclick=Channel_Add()>+</button>
+<button onclick=Channel_Remove()>-</button>
+<button onclick=Channel_Copy(Channel_Select.value)>Kopieren</button>
+<br><br>
+</div>
+<div style=position:absolute;left:240px;top:5em>
+<b>Punkt:</b>
+<button onclick=Point_Add()>+</button>
+<button onclick=Point_Remove()>-</button>
+<input name=name type=text style=border:none;width:200px>
+<br>
+</div>
+<div style=position:absolute;left:240px;top:6em><br>
+Kanal 0:&emsp;<Input disabled id=Channelsetting0 style=width:210px><br>
+Kanal 1:&emsp;<Input disabled id=Channelsetting1 style=width:210px><br>
+Kanal 2:&emsp;<Input disabled id=Channelsetting2 style=width:210px><br>
+Kanal 3:&emsp;<Input disabled id=Channelsetting3 style=width:210px><br>
+Kanal 4:&emsp;<Input disabled id=Channelsetting4 style=width:210px><br>
+Kanal 5:&emsp;<Input disabled id=Channelsetting5 style=width:210px><br>
+<br><br>
+<script type=text/javascript>var Setting=["","eco+ LED-Leiste GROWx5","eco+ LED-Leiste SUNSET 3500K","eco+ LED-Leiste SKY 6500K","eco+ LED-Leiste DAY 5500K","eco+ LED-Leiste TROPIC 4500K","Lüfter","CO2"];document.getElementById("Channelsetting0").value=Setting[%Setting_Chan0%];document.getElementById("Channelsetting1").value=Setting[%Setting_Chan1%];document.getElementById("Channelsetting2").value=Setting[%Setting_Chan2%];document.getElementById("Channelsetting3").value=Setting[%Setting_Chan3%];document.getElementById("Channelsetting4").value=Setting[%Setting_Chan4%];document.getElementById("Channelsetting5").value=Setting[%Setting_Chan5%];</script>
+</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<script type=text/javascript>Set_Day_in_Dropdown();Load_Day(Day.value);</script>
+<br>
+</div>
+<div class=copyrightbox_relative>
+<b>.: Copyright 2018 - 2019 / Frederik  :.</b>
+</div>
+</div>
+</body>
+</html>
